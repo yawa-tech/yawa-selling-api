@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 
-const emojis = require('./emojis');
+// eslint-disable-next-line import/no-unresolved
+const auth = require('./auth');
+const session = require('./session');
 
 const router = express.Router();
 
@@ -10,6 +13,6 @@ router.get('/', (req, res) => {
   });
 });
 
-router.use('/emojis', emojis);
-
+router.use('/auth', auth);
+router.use('/session', session);
 module.exports = router;
