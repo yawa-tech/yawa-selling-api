@@ -509,12 +509,16 @@ model Tracking {
 }
 
 model Trajet {
-  id            String    @id @default(uuid())
+  id            String    @id
+  number  String 
   duration      String?
   departureTime String
   arrivalTime   String?
   distance      Float 
   sellingId     String
+  rissing String
+  destination String
+  revenue Float @default(0)
   isActivated   Boolean  @default(true)
   Controls      Control[]
   Tickets       Ticket[]
@@ -522,7 +526,7 @@ model Trajet {
 }
 
 model Ticket {
-  id               String        @id @default(uuid())
+  id               String        @id 
   code             String ?       
   price            Float
   name             String
