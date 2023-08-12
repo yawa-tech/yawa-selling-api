@@ -5,6 +5,8 @@ const express = require('express');
 const auth = require('./auth');
 const session = require('./session');
 
+const trajet = require('./trajet');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -15,4 +17,5 @@ router.get('/', (req, res) => {
 
 router.use('/auth', auth);
 router.use('/session', session);
+router.use('/trajet', trajet);
 module.exports = router;
