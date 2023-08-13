@@ -510,13 +510,13 @@ model Tracking {
 
 model Trajet {
   id            String    @id
-  number  String 
+  number  Float @default(0) 
   duration      String?
   departureTime String
   arrivalTime   String?
-  distance      Float 
+  distance      Float @default(4)
   sellingId     String
-  rissing String
+  rising String
   destination String
   revenue Float @default(0)
   isActivated   Boolean  @default(true)
