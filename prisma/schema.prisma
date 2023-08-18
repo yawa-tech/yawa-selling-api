@@ -520,6 +520,7 @@ model Trajet {
   destination String
   revenue Float @default(0)
   isActivated   Boolean  @default(true)
+  isOnline Boolean  @default(false)
   Controls      Control[]
   Tickets       Ticket[]
   selling       Selling   @relation(fields: [sellingId], references: [id])
@@ -534,6 +535,7 @@ model Ticket {
   startTime        String
   endTime          String?
   status           String        @default("Valide")
+  zone             String       @default("Zone A")
   isActivated      Boolean       @default(true)
   walletId         String?
   tripId           String
@@ -542,6 +544,7 @@ model Ticket {
   sellingId        String
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
+  isOnline Boolean  @default(false)
   rate Rate @relation(fields: [rateId], references: [id])
   paymentMethode   PaymentMethod ? @relation(fields: [paymentMethodeId], references: [id])
   selling          Selling       @relation(fields: [sellingId], references: [id])

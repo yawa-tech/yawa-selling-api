@@ -7,6 +7,8 @@ const session = require('./session');
 
 const trajet = require('./trajet');
 
+const tickets = require('./tickets');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,4 +20,6 @@ router.get('/', (req, res) => {
 router.use('/auth', auth);
 router.use('/session', session);
 router.use('/trajet', trajet);
+router.use('/trajet/add', trajet);
+router.use('/tickets', tickets);
 module.exports = router;

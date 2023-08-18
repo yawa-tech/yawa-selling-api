@@ -38,11 +38,23 @@ router.post('/', async (req, res) => {
         include: { Seller: true, Driver: true },
       },
       Selling: {
-        where: { sellingDate: date },
+        where: { sellingDate: date, isActiveted: true },
         include: {
           Controls: true,
           Costs: true,
           Rental: true,
+          driver: true,
+          seller: true,
+          Companie: true,
+          device: true,
+          operator: true,
+          itinerary: {
+            include: {
+              coordinates: true,
+              rates: true,
+            },
+          },
+          vehicule: true,
           Tickets: true,
           tracking: true,
           trajet: true,
@@ -50,6 +62,8 @@ router.post('/', async (req, res) => {
       },
     },
   });
+  // eslint-disable-next-line no-console
+  console.log('session', result.Selling);
   res.json(result);
 });
 

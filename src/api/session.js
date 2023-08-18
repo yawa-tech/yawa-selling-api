@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 
@@ -7,20 +8,28 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   const {
-    sellerId, driverId, itineraryId, deviceId,
+    sellerId,
+    driverId,
+    itineraryId,
+    deviceId,
+    vehiculeId,
+    CompanieId,
+    operatorId,
+    reseauId,
   } = req.body;
   const d = new Date();
   const date = new Intl.DateTimeFormat('fr').format(d);
   const time = d.toLocaleTimeString('fr-FR');
   // eslint-disable-next-line no-console
   console.log('date: ', date, 'time ', time);
-  const device = await prisma.deviceAttribution.findUnique({
+  await prisma.selling.updateMany({
     where: {
-      id: deviceId,
+      deviceId,
+    },
+    data: {
+      isActiveted: false,
     },
   });
-  // eslint-disable-next-line no-console
-  console.log('device From Express', device);
   const type = 'Vente';
   const result = await prisma.selling.create({
     data: {
@@ -31,10 +40,10 @@ router.post('/', async (req, res) => {
       deviceId,
       startTime: time,
       sellingDate: date,
-      vehiculeId: device.vehiculeId,
-      CompanieId: device.CompanieId,
-      operatorId: device.operatorId,
-      reseauId: device.reseauId,
+      vehiculeId,
+      CompanieId,
+      operatorId,
+      reseauId,
     },
     include: {
       Controls: true,
