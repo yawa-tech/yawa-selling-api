@@ -456,8 +456,8 @@ model Control {
   checkedTickets Int        @default(0)
   ticketFraude   Int        @default(0)
   comment        String?
-  startTime      DateTime?
-  endTime        DateTime?
+  startTime      String?
+  endTime        String?
   controllerId   String
   trajetId       String
   itineraryId    String
