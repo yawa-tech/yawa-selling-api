@@ -569,7 +569,8 @@ model Rental {
 
 model Costs {
   id        String   @id @default(uuid())
-  rubricsId  String 
+  rubricsId  String
+  name String?
   price    Float
   sellingId String
   rubric Rubrics  @relation(fields: [rubricsId], references: [id])
