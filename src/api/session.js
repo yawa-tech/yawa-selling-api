@@ -64,6 +64,19 @@ router.post('/', async (req, res) => {
       Tickets: true,
       tracking: true,
       trajet: true,
+      reseau: {
+        include: {
+          Itinerary: {
+            include: {
+              rates: true,
+              coordinates: true,
+            },
+          },
+          Rubrics: true,
+          Subscription: true,
+          Controller: true,
+        },
+      },
     },
   });
   res.json(result);

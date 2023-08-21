@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
       id: rubricsId,
     },
   });
-  const result = await prisma.Costs.create({
+  await prisma.Costs.create({
     data: {
       rubricsId,
       name: fees.name,
@@ -27,20 +27,29 @@ router.post('/', async (req, res) => {
       sellingId,
     },
   });
-
+  const result = await prisma.Costs.findMany({
+    where: {
+      sellingId,
+    },
+  });
   res.json(result);
 });
 router.post('/delete', async (req, res) => {
   const {
     id,
+    sellingId,
   } = req.body;
 
-  const result = await prisma.Costs.delete({
+  await prisma.Costs.delete({
     where: {
       id,
     },
   });
-
+  const result = await prisma.Costs.findMany({
+    where: {
+      sellingId,
+    },
+  });
   res.json(result);
 });
 module.exports = router;

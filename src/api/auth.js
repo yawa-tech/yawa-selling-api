@@ -58,12 +58,25 @@ router.post('/', async (req, res) => {
           Tickets: true,
           tracking: true,
           trajet: true,
+          reseau: {
+            include: {
+              Itinerary: {
+                include: {
+                  rates: true,
+                  coordinates: true,
+                },
+              },
+              Rubrics: true,
+              Subscription: true,
+              Controller: true,
+            },
+          },
         },
       },
     },
   });
   // eslint-disable-next-line no-console
-  console.log('session', result.Selling);
+  console.log('session', result);
   res.json(result);
 });
 
