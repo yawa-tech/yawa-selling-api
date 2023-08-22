@@ -81,5 +81,30 @@ router.post('/', async (req, res) => {
   });
   res.json(result);
 });
+router.post('/end', async (req, res) => {
+  const {
+    id,
+    revenue,
+    expense,
+    solde,
+    totalTicket,
 
+  } = req.body;
+  const d = new Date();
+  const time = d.toLocaleTimeString('fr-FR');
+  // eslint-disable-next-line no-console
+  const result = await prisma.selling.update({
+    where: {
+      id,
+    },
+    data: {
+      isActiveted: false,
+      endTime: time,
+      expense,
+      solde,
+      totalTicket,
+    },
+  });
+  res.json(result);
+});
 module.exports = router;

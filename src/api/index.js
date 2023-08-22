@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
 
 router.use('/auth', auth);
 router.use('/session', session);
+router.use('/session/end', session);
 router.use('/trajet', trajet);
 router.use('/trajet/add', trajet);
 router.use('/tickets', tickets);
