@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', auth);
+router.use('/auth/gestion', auth);
 router.use('/session', session);
 router.use('/session/end', session);
 router.use('/trajet', trajet);

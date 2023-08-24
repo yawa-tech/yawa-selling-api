@@ -240,6 +240,7 @@ model Operator {
   name        String
   email       String?             @unique
   phone       String?             @unique
+  password    String              @default("123456")
   companieId  String
   isActiveted Boolean             @default(true)
   createdAt   DateTime            @default(now())
