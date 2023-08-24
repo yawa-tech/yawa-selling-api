@@ -10,6 +10,7 @@ const trajet = require('./trajet');
 const tickets = require('./tickets');
 const controles = require('./control');
 const rentals = require('./rentals');
+const operator = require('./operator');
 // eslint-disable-next-line import/no-unresolved
 const fees = require('./fees');
 
@@ -33,4 +34,5 @@ router.use('/rentals', rentals);
 router.use('/fees', fees);
 router.use('/fees/delete', fees);
 router.use('/rentals/update', rentals);
+router.use('/operator', operator);
 module.exports = router;
