@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
           vehicule: true,
           Tickets: true,
           tracking: true,
+          itinerary: true,
           trajet: true,
         },
       },
