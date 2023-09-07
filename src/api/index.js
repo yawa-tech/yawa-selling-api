@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', auth);
-router.use('/auth/gestion', auth);
 router.use('/session', session);
 router.use('/session/end', session);
 router.use('/trajet', trajet);
@@ -35,4 +34,7 @@ router.use('/fees', fees);
 router.use('/fees/delete', fees);
 router.use('/rentals/update', rentals);
 router.use('/operator', operator);
+router.use('/operator/edit', operator);
+router.use('/operator/sellings', operator);
+router.use('/operator/selling', operator);
 module.exports = router;
