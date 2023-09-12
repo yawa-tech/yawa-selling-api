@@ -100,6 +100,7 @@ router.post('/end', async (req, res) => {
     data: {
       isActiveted: false,
       endTime: time,
+      revenue,
       expense,
       solde,
       totalTicket,

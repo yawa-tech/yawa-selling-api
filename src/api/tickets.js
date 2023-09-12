@@ -11,6 +11,8 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   const {
     tickets,
+    revenue,
+    sellingId,
   } = req.body;
   for (let index = 0; index < tickets.length; index++) {
     const item = tickets[index];
@@ -39,7 +41,14 @@ router.post('/', async (req, res) => {
       },
     });
   }
-
+  await prisma.selling.update({
+    where: {
+      id: sellingId,
+    },
+    data: {
+      revenue,
+    },
+  });
   // eslint-disable-next-line no-console
   console.log('Store data from server', tickets);
   res.json('ok');
