@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
@@ -93,6 +94,10 @@ router.post('/end', async (req, res) => {
   const d = new Date();
   const time = d.toLocaleTimeString('fr-FR');
   // eslint-disable-next-line no-console
+  this.revenue = Number(revenue);
+  this.expense = Number(expense);
+  this.solde = Number(solde);
+  this.totalTicket = Number(totalTicket);
   const result = await prisma.selling.update({
     where: {
       id,
@@ -100,10 +105,10 @@ router.post('/end', async (req, res) => {
     data: {
       isActiveted: false,
       endTime: time,
-      revenue,
-      expense,
-      solde,
-      totalTicket,
+      revenue: this.revenue,
+      expense: this.expense,
+      solde: this.solde,
+      totalTicket: this.totalTicket,
     },
   });
   res.json(result);

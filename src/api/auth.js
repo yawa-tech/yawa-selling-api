@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 
@@ -6,7 +7,7 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { device, password } = req.body;
+  const { device } = req.body;
 
   const d = new Date();
   const date = new Intl.DateTimeFormat('fr').format(d);
@@ -14,7 +15,6 @@ router.post('/', async (req, res) => {
   const result = await prisma.deviceAttribution.findFirst({
     where: {
       deviceCode: device,
-      code: password,
       isActiveted: true,
     },
     include: {

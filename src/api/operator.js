@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 
@@ -6,11 +7,10 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { phone, password } = req.body;
+  const { phone } = req.body;
   const result = await prisma.Operator.findFirst({
     where: {
       phone,
-      password,
       isActiveted: true,
     },
     include: {
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
       Companie: true,
       Device: true,
       Vehicules: true,
+      Selling: true,
     },
   });
   // eslint-disable-next-line no-console

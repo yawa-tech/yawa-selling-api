@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 const express = require('express');
 
@@ -33,6 +34,7 @@ router.use('/rentals', rentals);
 router.use('/fees', fees);
 router.use('/fees/delete', fees);
 router.use('/rentals/update', rentals);
+router.use('/rentals/sync', rentals);
 router.use('/operator', operator);
 router.use('/operator/edit', operator);
 router.use('/operator/sellings', operator);

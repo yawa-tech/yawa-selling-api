@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */

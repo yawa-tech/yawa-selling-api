@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
@@ -19,7 +20,7 @@ router.post('/', async (req, res) => {
     sellingId,
   } = req.body;
 
-  const result = await prisma.Rental.create({
+  await prisma.Rental.create({
     data: {
       Companie,
       CompaniePhone,
@@ -30,7 +31,9 @@ router.post('/', async (req, res) => {
       sellingId,
     },
   });
-
+  const result = await prisma.Rental.findMany({
+    where: { sellingId },
+  });
   res.json(result);
 });
 
@@ -47,6 +50,17 @@ router.post('/update', async (req, res) => {
       isActivated,
       endTime,
     },
+  });
+
+  res.json(result);
+});
+router.post('/sync', async (req, res) => {
+  const {
+    sellingId,
+  } = req.body;
+
+  const result = await prisma.Rental.findMany({
+    where: { sellingId },
   });
 
   res.json(result);

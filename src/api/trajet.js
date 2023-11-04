@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable semi */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
@@ -39,12 +42,13 @@ router.post('/add', async (req, res) => {
   const {
     oldData,
     newData,
+    revenue,
   } = req.body;
   // eslint-disable-next-line no-console
   console.log('Olddata from api request', oldData);
   // eslint-disable-next-line no-console
   console.log('Newdata from api request', newData);
-
+  this.revenue = Number(revenue)
   await prisma.Trajet.upsert({
     where: {
       id: oldData.id,
@@ -81,6 +85,14 @@ router.post('/add', async (req, res) => {
   });
   let result;
   if (save) {
+    await prisma.selling.update({
+      where: {
+        id: newData.sellingId,
+      },
+      data: {
+        revenue: this.revenue,
+      },
+    });
     result = await prisma.Trajet.findMany({
       where: {
         sellingId: newData.sellingId,

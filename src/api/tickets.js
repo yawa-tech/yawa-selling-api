@@ -1,3 +1,11 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable quotes */
+/* eslint-disable linebreak-style */
+/* eslint-disable semi */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable indent */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
@@ -14,6 +22,10 @@ router.post('/', async (req, res) => {
     revenue,
     sellingId,
   } = req.body;
+    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ tickets:", tickets)
+    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ revenue:", revenue)
+    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ sellingId:", sellingId)
+  this.revenue = Number(revenue)
   for (let index = 0; index < tickets.length; index++) {
     const item = tickets[index];
     await prisma.Ticket.upsert({
@@ -41,15 +53,19 @@ router.post('/', async (req, res) => {
       },
     });
   }
-  await prisma.selling.update({
+ const store = await prisma.selling.update({
     where: {
       id: sellingId,
     },
     data: {
-      revenue,
+      revenue: this.revenue,
     },
   });
+
   // eslint-disable-next-line no-console
+  console.log('revenue from server', revenue);
+  // eslint-disable-next-line no-console
+  console.log('store data', store);
   console.log('Store data from server', tickets);
   res.json('ok');
 });
