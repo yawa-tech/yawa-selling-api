@@ -22,9 +22,6 @@ router.post('/', async (req, res) => {
     revenue,
     sellingId,
   } = req.body;
-    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ tickets:", tickets)
-    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ revenue:", revenue)
-    console.log("🚀 ~ file: tickets.js:23 ~ router.post ~ sellingId:", sellingId)
   this.revenue = Number(revenue)
   for (let index = 0; index < tickets.length; index++) {
     const item = tickets[index];
